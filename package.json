@@ -14,9 +14,7 @@
     "nuxt": "^2.14.0",
     "prettier": "^2.7.1"
   },
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
-  },
+  "devDependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
