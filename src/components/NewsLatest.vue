@@ -4,16 +4,25 @@
       <MainTitle title="Bài viết mới nhất" />
 
       <div class="latest-news__list spacing">
-        <NewsLatestCard />
-        <NewsLatestCard />
-        <NewsLatestCard />
+        <NewsLatestCard
+          v-for="item in posts"
+          v-bind:post="item"
+          v-bind:key="item.id"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      posts: state => state.posts.latestList
+    })
+  }
+}
 </script>
 
 <style>

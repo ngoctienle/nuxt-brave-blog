@@ -8,7 +8,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ store }) {
+    await store.dispatch('posts/actFetchLatestPost')
+  }
+}
 </script>
 
 <style></style>
