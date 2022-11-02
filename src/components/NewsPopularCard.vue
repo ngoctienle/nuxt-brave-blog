@@ -1,10 +1,11 @@
 <template>
-  <div class="popular-news__list--card">
+  <div class="popular-news__list--card" v-if="post">
     <ArticleItem
       isShowDesc
       isShowCategories
-      v-bind:isStyleRow="isStyleRow"
-      v-bind:isStyleCard="isStyleCard"
+      :isStyleRow="isStyleRow"
+      :isStyleCard="isStyleCard"
+      :post="post"
     />
   </div>
 </template>
@@ -19,6 +20,10 @@ export default {
     isStyleRow: {
       type: Boolean,
       default: false
+    },
+    post: {
+      type: Object,
+      default: null
     }
   }
 }

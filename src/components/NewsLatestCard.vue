@@ -1,6 +1,6 @@
 <template>
   <div class="latest-news__card" v-if="post">
-    <ArticleItem v-bind:post="post" />
+    <ArticleItem :post="post" />
   </div>
 </template>
 

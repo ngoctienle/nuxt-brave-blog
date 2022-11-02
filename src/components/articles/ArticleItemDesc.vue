@@ -1,12 +1,29 @@
 <template>
-  <p class="article-item__desc">
-    Markdown is a lightweight markup language with plain-text-formatting syntax.
-    Its design allows it to…
-  </p>
+  <div class="article-item__desc" v-html="getDesc" />
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    desc: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    getDesc() {
+      const text = this.desc.substring(0, 120)
+      if (text.indexOf('</p>') === -1) {
+        return this.desc.substring(0, 120) + '...</p>'
+      }
+      return text
+    }
+  }
+}
 </script>
 
-<style></style>
+<style>
+.article-item__desc p {
+  margin-bottom: 0;
+}
+</style>

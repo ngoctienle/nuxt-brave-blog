@@ -9,25 +9,22 @@
       />
 
       <div class="tcl-row">
-        <div class="tcl-col-12 tcl-col-md-6">
-          <ArticleItem isStyleCard v-bind:isShowAvatar="false" />
-        </div>
-
-        <div class="tcl-col-12 tcl-col-md-6">
-          <ArticleItem isStyleCard v-bind:isShowAvatar="false" />
-        </div>
-
-        <div class="tcl-col-12 tcl-col-md-6">
-          <ArticleItem isStyleCard v-bind:isShowAvatar="false" />
-        </div>
-
-        <div class="tcl-col-12 tcl-col-md-6">
-          <ArticleItem isStyleCard v-bind:isShowAvatar="false" />
+        <div
+          v-for="item in articles"
+          :key="item.id"
+          class="tcl-col-12 tcl-col-md-6"
+        >
+          <ArticleItem isStyleCard :isShowAvatar="false" :post="item" />
         </div>
       </div>
 
       <div class="text-center">
-        <AppButton isSizeLarge type="primary" v-bind:isLoading="false"
+        <AppButton
+          isSizeLarge
+          type="primary"
+          v-if="hasMoreArticles"
+          :isLoading="isLoading"
+          v-on:click.native="handleLoadMore"
           >Tải thêm</AppButton
         >
       </div>
@@ -36,7 +33,41 @@
 </template>
 
 <script>
-export default {}
+import { mapState, mapActions } from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      wpTotal: state => state.posts.articlesPaging.wpTotal,
+      wpTotalPages: state => state.posts.articlesPaging.wpTotalPages,
+      curPage: state => state.posts.articlesPaging.curPage,
+      articles: state => state.posts.articlesPaging.articles
+    }),
+    hasMoreArticles() {
+      return this.curPage < this.wpTotalPages
+    }
+  },
+  data() {
+    return {
+      isLoading: false
+    }
+  },
+  methods: {
+    ...mapActions({
+      actFetchArticlesList: 'posts/actFetchArticlesList'
+    }),
+    handleLoadMore(e) {
+      if (this.isLoading || !this.hasMoreArticles) {
+        return
+      }
+      this.isLoading = true
+      this.actFetchArticlesList({
+        curPage: this.curPage + 1
+      }).then(() => {
+        this.isLoading = false
+      })
+    }
+  }
+}
 </script>
 
 <style></style>

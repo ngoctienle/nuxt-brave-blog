@@ -1,9 +1,9 @@
 <template>
-  <button v-if="!href" v-bind:class="classNames">
+  <button v-if="!href" :class="classNames">
     <slot />
     <AppLoadingSvg v-if="isLoading" />
   </button>
-  <nuxt-link v-else v-bind:to="href" v-bind:class="classNames">
+  <nuxt-link v-else :to="href" :class="classNames">
     <slot />
     <AppLoadingSvg v-if="isLoading" />
   </nuxt-link>

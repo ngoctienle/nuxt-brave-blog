@@ -1,13 +1,28 @@
 <template>
   <div class="article-item__thumbnail">
-    <a href="#">
-      <img src="/assets/images/blog-1.jpg" alt="/assets/images/blog-1.jpg" />
-    </a>
+    <nuxt-link :to="slug">
+      <img :src="thumbnail" :alt="title" />
+    </nuxt-link>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    slug: {
+      type: String,
+      default: ''
+    },
+    thumbnail: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    }
+  }
+}
 </script>
 
 <style></style>

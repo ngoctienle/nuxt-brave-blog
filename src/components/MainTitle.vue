@@ -1,7 +1,7 @@
 <template>
-  <div class="main-title spacing" v-bind:class="classNames">
+  <div class="main-title spacing" :class="classNames">
     <h2>{{ title }}</h2>
-    <AppButton v-if="isViewMore" v-bind:href="viewMoreLink">{{
+    <AppButton v-if="isViewMore" :href="viewMoreLink">{{
       viewMoreText
     }}</AppButton>
   </div>

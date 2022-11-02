@@ -1,18 +1,24 @@
 <template>
-  <article v-if="post" class="article-item" v-bind:class="classNames">
-    <ArticleItemThumbnail />
+  <article v-if="post" class="article-item" :class="classNames">
+    <ArticleItemThumbnail
+      :slug="getSlug"
+      :thumbnail="post.featured_media_url"
+      :title="post.title.rendered"
+    />
 
     <div class="article-item__content">
-      <ArticleItemCategories v-if="isShowCategories" />
-      <ArticleItemStats v-if="isShowCategories" />
-      <ArticleItemTitle
-        v-bind:title="post.title.rendered"
-        v-bind:slug="getSlug"
+      <ArticleItemCategories
+        v-if="isShowCategories"
+        :categories="post.categories"
       />
-      <ArticleItemDesc v-if="isShowDesc" />
+      <ArticleItemStats v-if="isShowCategories" :viewCount="post.view_count" />
+      <ArticleItemTitle :title="post.title.rendered" :slug="getSlug" />
+      <ArticleItemDesc v-if="isShowDesc" :desc="post.excerpt.rendered" />
       <ArticleItemInfor
-        v-bind:isShowAvatar="isShowAvatar"
-        v-bind:created="post.date"
+        :isShowAvatar="isShowAvatar"
+        :created="post.date"
+        :nickname="post.author_data.nickname"
+        :avatar="post.author_data.avatar"
       />
     </div>
   </article>
