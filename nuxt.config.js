@@ -54,7 +54,7 @@ export default {
   css: [],
   plugins: ['~/plugins/axios'],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://api-wp.blog/wp-json/wp/v2'
+    baseUrl: process.env.BASE_URL || 'http://api-wp.blog/wp-json'
   },
   components: true,
   buildModules: [],
