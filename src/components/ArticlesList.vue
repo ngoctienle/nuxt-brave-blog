@@ -11,10 +11,14 @@
       <div class="tcl-row">
         <div
           v-for="item in articles"
-          :key="item.id"
+          v-bind:key="item.id"
           class="tcl-col-12 tcl-col-md-6"
         >
-          <ArticleItem isStyleCard :isShowAvatar="false" :post="item" />
+          <ArticleItem
+            isStyleCard
+            v-bind:post="item"
+            v-bind:isShowAvatar="false"
+          />
         </div>
       </div>
 
@@ -23,7 +27,7 @@
           isSizeLarge
           type="primary"
           v-if="hasMoreArticles"
-          :isLoading="isLoading"
+          v-bind:isLoading="isLoading"
           v-on:click.native="handleLoadMore"
           >Tải thêm</AppButton
         >
@@ -38,9 +42,9 @@ export default {
   computed: {
     ...mapState({
       wpTotal: state => state.posts.articlesPaging.wpTotal,
-      wpTotalPages: state => state.posts.articlesPaging.wpTotalPages,
       curPage: state => state.posts.articlesPaging.curPage,
-      articles: state => state.posts.articlesPaging.articles
+      articles: state => state.posts.articlesPaging.articles,
+      wpTotalPages: state => state.posts.articlesPaging.wpTotalPages
     }),
     hasMoreArticles() {
       return this.curPage < this.wpTotalPages
@@ -59,6 +63,7 @@ export default {
       if (this.isLoading || !this.hasMoreArticles) {
         return
       }
+
       this.isLoading = true
       this.actFetchArticlesList({
         curPage: this.curPage + 1

@@ -1,8 +1,6 @@
 <template>
   <h2 class="article-item__title">
-    <nuxt-link :to="slug">
-      {{ title }}
-    </nuxt-link>
+    <nuxt-link v-bind:to="slug">{{ title }}</nuxt-link>
   </h2>
 </template>
 

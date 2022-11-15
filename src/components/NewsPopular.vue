@@ -11,13 +11,13 @@
       <div class="popular-news__list spacing">
         <div class="popular-news__list--left">
           <div class="popular-news__list--row">
-            <NewsPopularCard :post="posts[0]" isStyleCard />
-            <NewsPopularCard :post="posts[1]" isStyleCard />
+            <NewsPopularCard v-bind:post="posts[0]" isStyleCard />
+            <NewsPopularCard v-bind:post="posts[1]" isStyleCard />
           </div>
         </div>
         <div class="popular-news__list--right">
           <div class="popular-news__list--row">
-            <NewsPopularCard :post="posts[2]" isStyleCard isStyleRow />
+            <NewsPopularCard v-bind:post="posts[2]" isStyleCard isStyleRow />
           </div>
         </div>
       </div>
@@ -26,9 +26,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   computed: {
+    // ...mapState({
+    //   posts: state => state.posts.popularList
+    // })
     ...mapGetters({
       posts: 'posts/getPopularList'
     })

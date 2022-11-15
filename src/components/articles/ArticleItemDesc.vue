@@ -1,5 +1,5 @@
 <template>
-  <div class="article-item__desc" v-html="getDesc" />
+  <div class="article-item__desc" v-html="getDesc"></div>
 </template>
 
 <script>
@@ -13,9 +13,11 @@ export default {
   computed: {
     getDesc() {
       const text = this.desc.substring(0, 120)
+
       if (text.indexOf('</p>') === -1) {
         return this.desc.substring(0, 120) + '...</p>'
       }
+
       return text
     }
   }

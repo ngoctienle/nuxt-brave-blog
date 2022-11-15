@@ -1,7 +1,7 @@
 <template>
   <div class="article-item__thumbnail">
-    <nuxt-link :to="slug">
-      <img :src="thumbnail" :alt="title" />
+    <nuxt-link v-bind:to="slug">
+      <img v-bind:src="thumbnail" v-bind:alt="title" />
     </nuxt-link>
   </div>
 </template>

@@ -52,7 +52,7 @@ export default {
   },
   srcDir: 'src/',
   css: [],
-  plugins: ['~/plugins/axios'],
+  plugins: ['~/plugins/axios', '~/plugins/dayjs'],
   env: {
     baseUrl: process.env.BASE_URL || 'http://api-wp.blog/wp-json'
   },

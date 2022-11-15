@@ -1,24 +1,31 @@
 <template>
-  <article v-if="post" class="article-item" :class="classNames">
+  <article v-if="post" class="article-item" v-bind:class="classNames">
     <ArticleItemThumbnail
-      :slug="getSlug"
-      :thumbnail="post.featured_media_url"
-      :title="post.title.rendered"
+      v-bind:slug="getSlug"
+      v-bind:title="post.title.rendered"
+      v-bind:thumbnail="post.featured_media_url"
     />
 
     <div class="article-item__content">
       <ArticleItemCategories
         v-if="isShowCategories"
-        :categories="post.categories"
+        v-bind:categories="post.categories"
       />
-      <ArticleItemStats v-if="isShowCategories" :viewCount="post.view_count" />
-      <ArticleItemTitle :title="post.title.rendered" :slug="getSlug" />
-      <ArticleItemDesc v-if="isShowDesc" :desc="post.excerpt.rendered" />
+      <ArticleItemStats
+        v-if="isShowCategories"
+        v-bind:viewCount="post.view_count"
+      />
+      <ArticleItemTitle
+        v-bind:slug="getSlug"
+        v-bind:title="post.title.rendered"
+      />
+      <ArticleItemDesc v-bind:desc="post.excerpt.rendered" v-if="isShowDesc" />
       <ArticleItemInfor
-        :isShowAvatar="isShowAvatar"
-        :created="post.date"
-        :nickname="post.author_data.nickname"
-        :avatar="post.author_data.avatar"
+        v-bind:isShowAvatar="isShowAvatar"
+        v-bind:created="post.date"
+        v-bind:userId="post.author"
+        v-bind:nickname="post.author_data.nickname"
+        v-bind:avatar="post.author_data.avatar"
       />
     </div>
   </article>

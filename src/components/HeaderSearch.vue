@@ -1,7 +1,7 @@
 <template>
   <div class="tcl-col-4">
     <!-- Header Search -->
-    <form action="/search.html" method="get" @submit.prevent="submitSearch">
+    <form action="/search.html" method="get" v-on:submit.prevent="submitSearch">
       <div class="header-search">
         <svg
           stroke="currentColor"
@@ -18,10 +18,10 @@
           ></path>
         </svg>
         <input
+          type="text"
           v-model="querySearch"
           class="header-search__input"
-          type="text"
-          placeholder="Search your keywords..."
+          placeholder="Nhập từ khóa tìm kiếm ..."
           aria-label="Search"
           name="query"
         />
@@ -52,5 +52,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

@@ -3,9 +3,9 @@
     <ArticleItem
       isShowDesc
       isShowCategories
-      :isStyleRow="isStyleRow"
-      :isStyleCard="isStyleCard"
-      :post="post"
+      v-bind:isStyleRow="isStyleRow"
+      v-bind:isStyleCard="isStyleCard"
+      v-bind:post="post"
     />
   </div>
 </template>

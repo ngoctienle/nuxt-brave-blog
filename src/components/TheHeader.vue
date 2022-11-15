@@ -3,10 +3,8 @@
     <div class="tcl-container">
       <div class="tcl-row tcl-no-gutters header">
         <HeaderLogo />
-
         <HeaderSearch />
-
-        <HeaderMenu />
+        <HeaderMenus />
       </div>
     </div>
   </header>

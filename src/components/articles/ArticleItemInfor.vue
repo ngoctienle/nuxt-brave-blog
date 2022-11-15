@@ -1,15 +1,15 @@
 <template>
   <div class="article-item__info">
     <div v-if="isShowAvatar" class="article-item__author-image">
-      <nuxt-link aria-label="John Doe" :to="getUserUrl">
-        <img :src="getUserAvatart" :alt="nickname" />
+      <nuxt-link aria-label="John Doe" v-bind:to="getUserUrl">
+        <img v-bind:src="getUserAvatar" v-bind:alt="nickname" />
       </nuxt-link>
     </div>
     <div class="article-item__info-right">
       <div class="article-item__author-name">
-        <nuxt-link :to="getUserUrl">
-          <strong>{{ nickname }}</strong>
-        </nuxt-link>
+        <nuxt-link aria-label="John Doe" v-bind:to="getUserUrl"
+          ><strong>{{ nickname }}</strong></nuxt-link
+        >
       </div>
       <div class="article-item__datetime">
         <div class="date">{{ dateTime.format }}</div>
@@ -36,11 +36,6 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-
-dayjs.extend(relativeTime)
-
 export default {
   props: {
     isShowAvatar: {
@@ -67,16 +62,17 @@ export default {
   computed: {
     dateTime() {
       let created = this.created
-      let createdDayjs = dayjs(created)
+      let createdDayjs = this.$dayjs(created)
+
       return {
-        format: createdDayjs.format('MMMM DD YYYY'),
-        relative: createdDayjs.fromNow(createdDayjs)
+        format: createdDayjs.format('DD/MM/YYYY'),
+        relative: createdDayjs.fromNow()
       }
     },
     getUserUrl() {
       return `/user/` + this.userId
     },
-    getUserAvatart() {
+    getUserAvatar() {
       if (this.avatar) {
         return this.avatar
       }

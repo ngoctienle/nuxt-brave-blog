@@ -20,9 +20,25 @@ export default {
       wpTotalPages,
       articles
     }
+
     if (curPage > 1) {
       data.articles = [...state.articlesPaging.articles, ...articles]
     }
+
     state.articlesPaging = data
+  },
+  setPostDetail(state, data) {
+    state.postDetail = data
+  },
+  setRelatedPosts(state, data) {
+    state.relatedPosts = data
+  },
+  increaseCommentCount(postsState) {
+    if (postsState.postDetail) {
+      postsState.postDetail = {
+        ...postsState.postDetail,
+        comment_count: postsState.postDetail.comment_count + 1
+      }
+    }
   }
 }

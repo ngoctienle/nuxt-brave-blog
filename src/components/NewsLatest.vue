@@ -4,7 +4,11 @@
       <MainTitle title="Bài viết mới nhất" />
 
       <div class="latest-news__list spacing">
-        <NewsLatestCard v-for="item in posts" :post="item" :key="item.id" />
+        <NewsLatestCard
+          v-for="item in posts"
+          v-bind:post="item"
+          v-bind:key="item.id"
+        />
       </div>
     </div>
   </div>

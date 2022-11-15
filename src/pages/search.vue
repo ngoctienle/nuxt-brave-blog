@@ -4,9 +4,18 @@
       <MainTitle isSearchTitle v-bind:title="title" />
 
       <!-- Article List -->
-      <div class="tcl-row tcl-jc-center">
+      <div
+        v-for="item in articles"
+        v-bind:key="item.id"
+        class="tcl-row tcl-jc-center"
+      >
         <div class="tcl-col-12 tcl-col-md-8">
-          <ArticleItem isShowDesc isShowCategories isStyleCard />
+          <ArticleItem
+            isShowDesc
+            isShowCategories
+            isStyleCard
+            v-bind:post="item"
+          />
         </div>
       </div>
 
@@ -14,11 +23,11 @@
         <AppButton
           isSizeLarge
           type="primary"
+          v-if="hasMoreArticles"
           v-bind:isLoading="isLoading"
           v-on:click.native="handleLoadMore"
+          >Tải thêm</AppButton
         >
-          Tải thêm
-        </AppButton>
       </div>
     </div>
   </div>
@@ -87,5 +96,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

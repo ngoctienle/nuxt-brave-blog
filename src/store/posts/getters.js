@@ -1,18 +1,17 @@
+import { mapPostCategories } from '@/helpers'
+
 export default {
   getPopularList(postState) {
-    const hashCategories = postState.hashCategories
     const popularList = postState.popularList
+    const hashCategories = postState.hashCategories
 
-    return popularList.map(post => {
-      const listCategoriesId = post.categories
-      const listCategories = listCategoriesId.map(id => {
-        return hashCategories[id]
-      })
+    return popularList.map(mapPostCategories(hashCategories))
+  },
+  getArticleList(postState) {
+    const hashCategories = postState.hashCategories
 
-      return {
-        ...post,
-        categories: listCategories
-      }
-    })
+    return postState.articlesPaging.articles.map(
+      mapPostCategories(hashCategories)
+    )
   }
 }
