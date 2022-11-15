@@ -25,6 +25,10 @@ export default {
     viewMoreText: {
       type: String,
       default: ''
+    },
+    isSearchTitle: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -32,7 +36,8 @@ export default {
       return {
         'd-flex': this.isViewMore,
         'tcl-jc-between': this.isViewMore,
-        'tcl-ais-center': this.isViewMore
+        'tcl-ais-center': this.isViewMore,
+        'main-title__search': this.isSearchTitle
       }
     }
   }
